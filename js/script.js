@@ -1,5 +1,24 @@
 $(document).ready(function () {
-
+    // 모달창
+    let modal = $('.modal');
+    let modal_cont = $('.modal-cont');
+    let modal_close = $('.modal-close');
+    let modal_show = $('.modal-show');
+    modal_close.click(function () {
+        modal.fadeOut();
+    });
+    modal.click(function () {
+        modal.fadeOut();
+    });
+    modal_cont.click(function (event) {
+        event.stopPropagation();
+    });
+    modal_show.click(function (e) {
+        // href 를 막아야 합니다.
+        e.preventDefault();
+        modal.fadeIn();
+    });
+    
     // 위로가기
     $('.gotop').click(function (e) {
         // href 를 막는다.
@@ -8,6 +27,7 @@ $(document).ready(function () {
             scrollTop: 0
         });
     });
+
     // 스크롤바 처리
     $(window).scroll(function () {
         // 스크롤바의 위치
@@ -20,6 +40,18 @@ $(document).ready(function () {
         }
 
     });
+
+    // cs 슬라이드
+    new Swiper('.sw-cs', {
+        slidesPerView: 4,
+        spaceBetween: 0,
+        slidesPerGroup: 2,
+        pagination: {
+            el: ".sw-cs-pg",
+            clickable: true,
+        },
+    });
+
     // 베스트 상품 메뉴 
     var best_cate_list = $('.best-cate-list>li');
     var best_cate_bg = $('.best-cate-bg');
@@ -36,7 +68,7 @@ $(document).ready(function () {
     });
 
     // 배너슬라이드
-    new Swiper('.swiper-container', {
+    new Swiper('.sw-banner2', {
         loop: true,
         autoplay: {
             delay: 2000,
